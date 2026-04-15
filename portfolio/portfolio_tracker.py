@@ -8,15 +8,15 @@ class PortfolioTracker():
 
     def on_fill_event(self, fillevent):
         if fillevent.orderside == 'buy':
-            self.cash -= fillevent.fill_price * fillevent.num_of_shares
+            self.cash -= fillevent.fillprice * fillevent.numOfShares
             
-            self.positions[fillevent.ticker] += fillevent.num_of_shares
-            self.last_prices[fillevent.ticker] = fillevent.fill_price
+            self.positions[fillevent.Ticker] += fillevent.numOfShares
+            self.last_prices[fillevent.Ticker] = fillevent.fillprice
         else:
-            self.cash +=fillevent.fill_price * fillevent.num_of_shares
+            self.cash +=fillevent.fillprice * fillevent.numOfShares
 
-            self.positions[fillevent.ticker] -= fillevent.num_of_shares
-            self.last_prices[fillevent.ticker] = fillevent.fill_price
+            self.positions[fillevent.Ticker] -= fillevent.numOfShares
+            self.last_prices[fillevent.Ticker] = fillevent.fillprice
 
         self.total_value = self.cash + sum(quantity* self.last_prices[ticker]for ticker, quantity in self.positions.items()) 
 

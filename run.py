@@ -1,8 +1,9 @@
 from engine.events_queue import EventQueue
+from engine.main import Engine
+from engine.execution_handler import ExecutionHandler
 from data.data_handler import DataHandler
 from models.events import MarketDataEvent, OrderEvent, FillEvent
-from strategy.strategy import Strategy
-from engine.execution_handler import ExecutionHandler
+from strategy.strategy import Strategy, MovingAverageStratgey
 from portfolio.portfolio_tracker import PortfolioTracker
 
 
@@ -37,3 +38,11 @@ data = [
 ]
 
 
+
+queue = EventQueue()
+data_handler = DataHandler(data, queue)
+moving_strategy = MovingAverageStratgey(queue, 'PTR', 10000)
+execution_handler = ExecutionHandler(queue, 0.003)
+portfolio_tracker = PortfolioTracker(100000)
+engine= Engine(data_handler, queue, moving_strategy,execution_handler,portfolio_tracker)
+engine.run()
