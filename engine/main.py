@@ -22,7 +22,7 @@ class Engine():
 
         while self.data_handler.check_data() or self.queue.is_empty() == False:
             event = None
-            if self.queue.is_empty == False:
+            if self.queue.is_empty() == False:
 
                 event = self.queue.get()
 
