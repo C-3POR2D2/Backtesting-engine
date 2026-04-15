@@ -12,7 +12,7 @@ data = [
     {"timestamp": "2024-01-01 09:31:00", "open": 151.0, "high": 153.0, "low": 150.0, "close": 152.0, "volume": 1200},
     {"timestamp": "2024-01-01 09:32:00", "open": 152.0, "high": 154.0, "low": 151.0, "close": 153.0, "volume": 900},
     {"timestamp": "2024-01-01 09:32:00", "open": 153.0, "high": 120.0, "low": 151.0, "close": 154.0, "volume": 900},
-    {"timestamp": "2024-01-01 09:32:00", "open": 154.0, "high": 110.0, "low": 151.0, "close": 155.0, "volume": 900},
+    {"timestamp": "2024-01-01 09:32:00", "open": 154.0, "high": 140.0, "low": 151.0, "close": 155.0, "volume": 900},
     {"timestamp": "2024-01-01 09:32:00", "open": 155.0, "high": 150.0, "low": 151.0, "close": 156.0, "volume": 900},
     {"timestamp": "2024-01-01 09:32:00", "open": 156.0, "high": 160.0, "low": 151.0, "close": 155.0, "volume": 900},
     {"timestamp": "2024-01-01 09:32:00", "open": 157.0, "high": 163.0, "low": 151.0, "close": 153.0, "volume": 900},
