@@ -1,4 +1,4 @@
-from events_queue import EventQueue
+from engine.events_queue import EventQueue
 from data.data_handler import DataHandler
 from models.events import MarketDataEvent, OrderEvent, FillEvent
 from strategy.strategy import Strategy
