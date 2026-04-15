@@ -28,8 +28,8 @@ class MovingAverageStratgey(Strategy):
             average_price = sum(self.closing_price)/ 20
             
             if(event.close > average_price):
-                 order = OrderEvent(event.timestamp, event.close, uuid.uuid4(),"MarketOrder", "buy")
+                 order = OrderEvent(event.timestamp, event.close, uuid.uuid4(),"MarketOrder", "buy", event.ticker, event.num_of_shares)
                  self.order_queue.put(order)
             else:
-                order = OrderEvent(event.timestamp, event.close, uuid.uuid4(), "MarketOrder", "sell")
+                order = OrderEvent(event.timestamp, event.close, uuid.uuid4(), "MarketOrder", "sell", event.ticker, event.num_of_shares)
                 self.order_queue.put(order)
