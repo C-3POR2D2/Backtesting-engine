@@ -16,3 +16,4 @@ class ExecutionHandler():
 
         fill_price = order_event.price + (self.slippage_factor * direction)
         fill_event = FillEvent(order_event.timestamp, fill_price, order_event.ticker, order_event.num_of_shares, order_event.orderside)
+        self.queue.put(fill_event)
