@@ -1,5 +1,4 @@
 from collections import defaultdict
-
 class PortfolioTracker():
     def __init__(self, cash):
         self.cash = cash
