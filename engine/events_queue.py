@@ -1,4 +1,6 @@
 from queue import Queue 
+from data.data_handler import DataHandler
+ 
 
 class EventQueue():
     def __init__(self):
