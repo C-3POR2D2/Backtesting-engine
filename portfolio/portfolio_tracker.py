@@ -12,12 +12,14 @@ class PortfolioTracker():
             
             self.positions[fillevent.Ticker] += fillevent.numOfShares
             self.last_prices[fillevent.Ticker] = fillevent.fillprice
+           
         else:
             self.cash +=fillevent.fillprice * fillevent.numOfShares
 
             self.positions[fillevent.Ticker] -= fillevent.numOfShares
             self.last_prices[fillevent.Ticker] = fillevent.fillprice
-
+           
         self.total_value = self.cash + sum(quantity* self.last_prices[ticker]for ticker, quantity in self.positions.items()) 
-
+        print(f"FILL: {fillevent.orderside} {fillevent.numOfShares} {fillevent.Ticker} @ {fillevent.fillprice}")
+        print(f"Cash: {self.cash:.2f} | Total Value: {self.total_value:.2f}")
     
