@@ -32,6 +32,9 @@ class MovingAverageStratgey(Strategy):
             if(event.close > average_price):
                  order = OrderEvent(event.timestamp, event.close, uuid.uuid4(),"MarketOrder", "buy", self.ticker, self.quantity)
                  self.order_queue.put(order)
+                 print(f"Order:timestamp={order.timestamp} ticker = {self.ticker} price = {order.price} id={order.id} ordertype={order.ordertype} orderside ={order.orderside} quantity={self.quantity}")
             else:
                 order = OrderEvent(event.timestamp, event.close, uuid.uuid4(), "MarketOrder", "sell", self.ticker, self.quantity)
                 self.order_queue.put(order)
+                from abc import ABC, abstractmethod
+                print(f"Order:timestamp={order.timestamp} ticker = {self.ticker} price = {order.price} id={order.id} ordertype={order.ordertype} orderside ={order.orderside} quantity={self.quantity}")
