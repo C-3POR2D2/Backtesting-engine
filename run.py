@@ -39,6 +39,7 @@ data = [
 
 
 
+
 queue = EventQueue()
 data_handler = DataHandler(data, queue)
 moving_strategy = MovingAverageStratgey(queue, 'PTR', 10000)

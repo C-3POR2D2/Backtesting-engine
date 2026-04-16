@@ -35,6 +35,7 @@ class Engine():
             else:
                 new_candle = self.data_handler.send_market_data()
 
+
         # while data has candles OR queue is not empty:
         #     if queue is not empty:
         #         get event
