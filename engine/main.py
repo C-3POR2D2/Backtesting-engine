@@ -5,9 +5,6 @@ from strategy.strategy import Strategy
 from engine.execution_handler import ExecutionHandler
 from portfolio.portfolio_tracker import PortfolioTracker
 
-
-
-
 class Engine():
     def __init__(self, data_handler, queue, strategy, execution_hander, portfolio_tracker):
         self.data_handler = data_handler
@@ -34,13 +31,3 @@ class Engine():
                     market_event = self.portfolio_tracker.on_fill_event(event)
             else:
                 new_candle = self.data_handler.send_market_data()
-
-
-        # while data has candles OR queue is not empty:
-        #     if queue is not empty:
-        #         get event
-        #         if MarketDataEvent → Strategy
-        #         if OrderEvent → ExecutionHandler
-        #         if FillEvent → PortfolioTracker
-        #     else:
-        #         ask DataHandler for next candle

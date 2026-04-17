@@ -1,9 +1,6 @@
-import time 
-
 class Event():
     def __init__(self, timestamp):
         self.timestamp = timestamp
-
 
 class MarketDataEvent(Event):
     def __init__(self, timestamp, volume, open, high, low, close):
