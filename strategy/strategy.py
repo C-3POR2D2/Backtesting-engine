@@ -10,8 +10,6 @@ class Strategy(ABC):
     def on_market_data_event(self, event):
         pass
 
-
-
 class MovingAverageStratgey(Strategy):
    
     def __init__(self, order_queue, ticker, num_of_shares):
@@ -20,6 +18,7 @@ class MovingAverageStratgey(Strategy):
         self.order_queue = order_queue    
         self.ticker = ticker
         self.quantity = num_of_shares
+        self.in_postion = False
 
     def on_market_data_event(self, event):
         self.current_candle = event
@@ -29,12 +28,14 @@ class MovingAverageStratgey(Strategy):
         if len(self.closing_price) >= 20:
             average_price = sum(self.closing_price)/ 20
             
-            if(event.close > average_price):
+            if(event.close > average_price and not self.in_postion):
                  order = OrderEvent(event.timestamp, event.close, uuid.uuid4(),"MarketOrder", "buy", self.ticker, self.quantity)
                  self.order_queue.put(order)
+                 self.in_postion = True
                  print(f"Order:timestamp={order.timestamp} ticker = {self.ticker} price = {order.price} id={order.id} ordertype={order.ordertype} orderside ={order.orderside} quantity={self.quantity}")
-            else:
+            
+            elif (event.close <= average_price and self.in_postion):
                 order = OrderEvent(event.timestamp, event.close, uuid.uuid4(), "MarketOrder", "sell", self.ticker, self.quantity)
                 self.order_queue.put(order)
-                from abc import ABC, abstractmethod
+                self.in_postion = False
                 print(f"Order:timestamp={order.timestamp} ticker = {self.ticker} price = {order.price} id={order.id} ordertype={order.ordertype} orderside ={order.orderside} quantity={self.quantity}")

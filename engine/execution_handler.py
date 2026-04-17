@@ -5,7 +5,7 @@ class ExecutionHandler():
     def __init__(self, queue, slippage_factor): 
         self.queue = queue  
         self.slippage_factor = slippage_factor
-    
+   
     def fill(self, order_event):
         fill_price= 0
         direction = 0

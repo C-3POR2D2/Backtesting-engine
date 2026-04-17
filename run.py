@@ -39,9 +39,10 @@ data = [
 
 
 
+
 queue = EventQueue()
 data_handler = DataHandler(data, queue)
-moving_strategy = MovingAverageStratgey(queue, 'PTR', 10000)
+moving_strategy = MovingAverageStratgey(queue, 'PTR', 100)
 execution_handler = ExecutionHandler(queue, 0.003)
 portfolio_tracker = PortfolioTracker(100000)
 engine= Engine(data_handler, queue, moving_strategy,execution_handler,portfolio_tracker)
