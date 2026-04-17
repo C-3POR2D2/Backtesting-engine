@@ -19,6 +19,6 @@ class DataHandler():
                 market_data= MarketDataEvent(current_data['timestamp'], current_data['volume'], current_data[ 'open'], current_data[ 'high'], current_data[ 'low'], current_data[ 'close'])
                 self.queue.put(market_data)
                 self.iterator +=1
-
+                print(f"CANDLE: {current_data['timestamp']} close={current_data['close']}")
         pass
 
